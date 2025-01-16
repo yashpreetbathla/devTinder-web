@@ -8,28 +8,30 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      axios
-        .post(
-          BASE_URL + "/login",
-          {
-            emailId: emailId,
-            password: password,
-          },
-          {
-            withCredentials: true,
-          }
-        )
-        .then((response) => {
-          dispatch(addUser(response.data));
-          navigate("/");
-        });
+      const res = await axios.post(
+        BASE_URL + "/login",
+        {
+          emailId: emailId,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      dispatch(addUser(res.data));
+      navigate("/");
     } catch (err) {
-      console.log(err);
+      console.log("test,", err);
+      setError(err?.response?.data?.message || "something went wrong");
+      console.log(err?.response?.data);
     }
   };
 
@@ -60,6 +62,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center mt-2">
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
