@@ -36,14 +36,17 @@ const Connections = () => {
     <div className="text-center my-10">
       <h1 className="text-bold text-3xl text-white">Connections</h1>
       {connections.map((connection) => {
-        const { firstName, lastName, photoUrl, age, gender, about } =
+        const { _id, firstName, lastName, photoUrl, age, gender, about } =
           connection;
         return (
-          <div className="flex m-4 p-4 border rounded-lg bg-base-200 w-1/2 mx-auto">
+          <div
+            key={_id}
+            className="flex m-4 p-4 border rounded-lg bg-base-200 w-1/2 mx-auto"
+          >
             <div>
               <img
                 alt="photo"
-                className="w-20 h-20 rounded-full"
+                className="w-20 h-20 rounded-full object-cover"
                 src={
                   photoUrl ||
                   "https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-1230.jpg"
