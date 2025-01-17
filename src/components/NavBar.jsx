@@ -31,7 +31,7 @@ const NavBar = () => {
 
       {user && (
         <div className="flex-none gap-2 ">
-          <div>Welcome. {user.firstName}</div>
+          <div>Welcome {user.firstName}</div>
           <div className="dropdown dropdown-end mx-5">
             <div
               tabIndex={0}
@@ -39,10 +39,7 @@ const NavBar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+                <img alt="Tailwind CSS Navbar component" src={user?.photoUrl} />
               </div>
             </div>
             <ul
