@@ -26,37 +26,78 @@ A modern web application that connects developers based on their skills, interes
 - **API Client**: Axios
 - **Development Tools**: ESLint, PostCSS
 
-## 📱 Architecture
+## 📁 Project Structure
 
 ```mermaid
 graph TD
-    A[Browser] --> B[React App]
-    B --> C[Redux Store]
-    B --> D[React Router]
-    B --> E[Socket.IO Client]
+    A[devTinder-web] --> B[src]
+    A --> C[public]
+    A --> D[my-react-router-app]
     
-    subgraph Frontend Components
-        F[App Layout] --> G[Profile]
-        F --> H[Chat]
-        F --> I[Match]
-        F --> J[Swiping Interface]
+    subgraph Source Code (src)
+        B --> E[App.jsx]
+        B --> F[main.jsx]
+        B --> G[components]
+        B --> H[utils]
     end
     
-    subgraph State Management
-        C --> K[User State]
-        C --> L[Match State]
-        C --> M[Chat State]
+    subgraph Components
+        G --> I[Profile]
+        G --> J[Chat]
+        G --> K[Match]
+        G --> L[Swiping]
+        G --> M[Layout]
     end
     
-    subgraph API Integration
-        E --> N[Real-time Events]
-        D --> O[API Routes]
+    subgraph Utils
+        H --> N[api]
+        H --> O[auth]
+        H --> P[socket]
+        H --> Q[constants]
     end
     
     style B fill:#f9f,stroke:#333,stroke-width:2px
-    style F fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bff,stroke:#333,stroke-width:2px
+    style G fill:#bbf,stroke:#333,stroke-width:2px
+    style H fill:#bff,stroke:#333,stroke-width:2px
 ```
+
+## 📂 Directory Structure
+
+Here's a detailed breakdown of the project structure:
+
+```
+devTinder-web/
+├── src/                    # Source code directory
+│   ├── components/         # Reusable React components
+│   │   ├── Profile/        # User profile components
+│   │   ├── Chat/          # Chat interface components
+│   │   ├── Match/         # Matching system components
+│   │   ├── Swiping/       # Tinder-like swiping interface
+│   │   └── Layout/        # Layout components
+│   ├── utils/             # Utility functions and helpers
+│   │   ├── api/          # API client and services
+│   │   ├── auth/         # Authentication utilities
+│   │   ├── socket/       # Socket.IO client configuration
+│   │   └── constants/    # Application constants
+│   ├── App.jsx           # Main application component
+│   └── main.jsx          # Entry point of the application
+├── public/                # Static assets
+├── my-react-router-app/   # React Router configuration
+├── package.json          # Project dependencies and scripts
+├── vite.config.js        # Vite configuration
+├── tailwind.config.js    # Tailwind CSS configuration
+├── postcss.config.js     # PostCSS configuration
+└── eslint.config.js      # ESLint configuration
+```
+
+Each directory serves a specific purpose:
+
+- `src/`: Contains all the source code of the application
+  - `components/`: Reusable React components organized by feature
+  - `utils/`: Utility functions and helper modules
+- `public/`: Static assets like images, fonts, and favicon
+- `my-react-router-app/`: Contains React Router configuration and related files
+- Configuration files: Various configuration files for build tools and development environment
 
 ## 🚀 Getting Started
 
